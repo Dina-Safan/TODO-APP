@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../CSS/bootstrap.min.css">
     <!-- Shared Style -->
      <link rel="stylesheet" href="../CSS/style.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- My Register Style -->
     <link rel="stylesheet" href="../CSS/register.css">
 </head>
@@ -21,27 +22,27 @@
                 <h2 class="text-center mb-4 fw-medium">Create Account</h2>
               <div class="row ">
                 <div class="col-6">
-                    <input type="text" class="form-control" placeholder="First name" aria-label="First name" name="First name">
-                     <p class=" mt-2 invisible" role="alert">Must Start With Capital Lette</p>
+                    <input id="firstNameInput" type="text" class="form-control" placeholder="First name" aria-label="First name" name="First name">
+                     <p class=" mt-2 invisible" role="alert"> (min 3 chars, start with capital)</p>
                 </div>
                 <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="Last name">
-                     <p class=" mt-2 invisible" role="alert">Must Start With Capital Lette</p>
+                    <input id="lastNameInput"  type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="Last name">
+                     <p class=" mt-2 invisible" role="alert"> (min 3 chars, start with capital)</p>
                 </div>       
                 <div class="col-12">
-                    <input type="email" class="form-control" placeholder=" Email" aria-label="Email" name="Email">
-                    <p class=" mt-2 invisible" role="alert"> Not Valid Email</p>
+                    <input id="emailInput"  type="email" class="form-control" placeholder=" Email" aria-label="Email" name="Email">
+                    <p class=" mt-2 invisible" role="alert"> Please enter valid email address</p>
                 </div>   
                 <div class="col-12">
-                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="Password">
-                     <p class=" mt-2 invisible" role="alert"> More than 8 letter</p>
+                    <input id="passwordInput" type="password" class="form-control" placeholder="Password" aria-label="Password" name="Password">
+                     <p class=" mt-2 invisible" role="alert"> Password must be at least 6 characters with no spaces</p>
                 </div>   
                 <div class="col-12">
-                    <input type="Repassword" class="form-control" placeholder="Confirm Password" aria-label="RePassword" name="RePassword">
-                    <p class=" mt-2 invisible" role="alert"> not match</p>
+                    <input id="repasswordInput" type="Repassword" class="form-control" placeholder="Confirm Password" aria-label="RePassword" name="RePassword">
+                    <p class=" mt-2 invisible" role="alert"> Passwords do not match</p>
                 </div>  
                 <div class="col-12">
-                    <button type="button" class="btn btn-primary w-100 py-2 fw-semibold">Create An Account</button> 
+                    <button id="btn-Register" type="button" class="btn btn-primary w-100 py-2 fw-semibold">Create An Account</button> 
                 </div>  
                
              </div>
@@ -59,7 +60,7 @@
 
         </div>
     </section>
-
-    
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../JS/register.js"></script>
 </body>
 </html>
