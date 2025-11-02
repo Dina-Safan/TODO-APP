@@ -1,0 +1,31 @@
+ button{
+    background-color: var(--bs-primary) !important;
+    border-color: var(--bs-primary)  !important;
+
+}
+
+button:hover{
+    border-color: var(--bs-primary) !important;
+}
+
+a{
+    color: var(--bs-primary);
+    font-weight: 700;
+}
+
+
+.register-page .form {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+input + p{
+    background-color: #f8d7da;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+
+

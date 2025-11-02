@@ -1,0 +1,40 @@
+
+:root,
+[data-bs-theme="light"] {
+  --bs-body-bg: #fff;       
+  --bs-body-color: #273238;     
+  --bs-primary: #FFC100;       
+  --bs-success: #2ECC71;   
+    --form-bg-opacity: 0.85;     
+}
+
+[data-bs-theme="dark"] {
+  --bs-body-bg: #273238;        
+  --bs-body-color: #FFF;     
+  --bs-primary: #FFC100;        
+  --bs-success: #27AE60;       
+}
+
+
+body{
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+img{
+    width: 100%;
+   
+    display: block;
+}
+
+ul{
+    list-style: none;
+}
+
+.form-control:focus{
+
+    background-color: var(--bs-body-bg);  
+    color: var(--bs-body-color);   
+    border-color: var(--bs-primary);  
+    box-shadow: 0 0 0 .25rem #ffbf009d;
+}
