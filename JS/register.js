@@ -10,7 +10,7 @@ const repasswordInput=document.getElementById("repasswordInput");
 const btnRegister=document.getElementById("btn-Register");
 
 //^ Variables
-let userArr=JSON.parse(localStorage.getItem("users"))||[];
+const userArr=JSON.parse(localStorage.getItem("users"))||[];
 
 //~ Function
 function register(){
