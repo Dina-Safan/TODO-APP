@@ -1,5 +1,7 @@
-//* Html Element
+import { clearForm, showToast } from "./Utils/ui";
+import { emailRegex, nameRegex, passwordRegex, validation } from "./Utils/validate";
 
+//* Html Element
 const firstNameInput=document.getElementById("firstNameInput");
 const lastNameInput=document.getElementById("lastNameInput");
 const emailInput=document.getElementById("emailInput");
@@ -9,10 +11,6 @@ const btnRegister=document.getElementById("btn-Register");
 
 //^ Variables
 let userArr=JSON.parse(localStorage.getItem("users"))||[];
-const nameRegex= /^[A-Z][a-z]{2,}$/;
-const emailRegex=/^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/;
-const passwordRegex = /^\S{6,}$/;
-
 
 //~ Function
 function register(){
@@ -45,54 +43,7 @@ function register(){
 showToast("Please Enter Valid Data",)
 }
 }
-function validation(element,regex){
-    if(regex.test(element.value)){
-       element.nextElementSibling.classList.add("invisible");
-       element.classList.add("is-valid");
-       element.classList.remove("is-invalid");  
-         
-       return true;
-    }
 
-    else{
-         element.nextElementSibling.classList.remove("invisible");
-         element.classList.remove("is-valid");
-         element.classList.add("is-invalid");  
-       
-         return false;
-    }
-}
-
-function clearForm(){
-    firstNameInput.value="";
-    lastNameInput.value="";
-    emailInput.value="";
-    passwordInput.value="";
-    repasswordInput.value = "";
-      const inputs = [firstNameInput, lastNameInput, emailInput, passwordInput, repasswordInput];
-  inputs.forEach(input => {
-    input.classList.remove("is-valid", "is-invalid");
-    input.nextElementSibling.classList.add("invisible");
-    
-  });
-}
-
-function showToast(message, isSuccess = false) {
-    Toastify({
-        text: message,
-        duration: 3000,
-        position: "center",
-        style: {
-            background: isSuccess 
-                ? "linear-gradient(to right, #00b09b, #96c93d)"
-                : "linear-gradient(to right, #FFC100, #FFC100)",
-        },
-        offset: {
-            x: 50, 
-            y: 20
-        },
-    }).showToast();
-}
 //& Events
 btnRegister.addEventListener("click",register);
  firstNameInput.addEventListener("input",function(){validation(firstNameInput,nameRegex)});
