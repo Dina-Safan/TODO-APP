@@ -14,8 +14,11 @@ const userArr=JSON.parse(localStorage.getItem("users"))||[];
 function login(){      
    const isExist= userArr.find((user)=>user.Email==emailInput.value && user.password==passwordInput.value);
    if(isExist){
+     localStorage.setItem("currentUser", JSON.stringify(isExist));
      showToast("Login successful!", true);
-    window.location.href="./index.html";
+    setTimeout(() => {
+    window.location.href = "./index.html";
+  }, 1000);
    }
    else{
     showToast("Login failed. Check your details");
@@ -25,7 +28,6 @@ function login(){
    }
     }
  
-
 
 //& Events
 btnLogin.addEventListener("click",login);
