@@ -4,9 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-</head>
+     <!-- FontAwesome File -->
+    <link rel="stylesheet" href="./../CSS/all.min.css">
+    <!-- BootStrap File -->
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <!-- Shared Style -->
+     <link rel="stylesheet" href="../CSS/style.css">
+     <!-- Toast -->
+     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- My Register Style -->
+    <link rel="stylesheet" href="../CSS/register_login.css">
+    </head>
 <body>
+      <section class="login-page  d-flex justify-content-center align-items-center min-vh-100">
+        <div class="container ">
+            <div class="row d-flex flex-wrap align-items-center justify-content-between ">
+            <div class="form col-12 col-lg-6 p-4 p-md-4  order-2 order-lg-1">
+                <h2 class="text-center mb-4 fw-medium">Create Account</h2>
+              <div class="row ">
+                  
+                <div class="col-12">
+                    <input id="emailInput"  type="email" class="form-control" placeholder=" Email" aria-label="Email" name="Email">
+                    <p class=" mt-2 invisible" role="alert"> Email is Not Valid</p>
+                </div>   
+                <div class="col-12">
+                    <input id="passwordInput" type="password" class="form-control" placeholder="Password" aria-label="Password" name="Password">
+                     <p class=" mt-2 invisible" role="alert"> Password is Not valid</p>
+                </div>   
+             
+                <div class="col-12">
+                    <button id="btn-Login" type="button" class="btn btn-primary w-100 py-2 fw-semibold">Login</button> 
+                </div>  
+               
+             </div>
+             
+             <p class="text-center mt-3">Dont't Have An Account? <a href="./register.html" >Sign UP</a></p>
+          </div>
     
+        <div class="image d-none d-lg-block col-lg-5 mb-4 mb-lg-0 order-1 order-lg-2 ">
+            <img src="../assets/images/todo-login7.jpg" alt="" class="img-fluid ">
     
+        </div>
+
+            </div>
+      
+
+        </div>
+    </section>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../JS/login.js" type="module"></script>
+
+
 </body>
 </html>
