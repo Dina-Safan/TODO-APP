@@ -1,5 +1,5 @@
-import { clearForm, showToast } from "./Utils/ui";
-import { emailRegex, nameRegex, passwordRegex, validation } from "./Utils/validate";
+import { clearForm, showToast } from "./Utils/ui.js";
+import { emailRegex, nameRegex, passwordRegex, validation } from "./Utils/validate.js";
 
 //* Html Element
 const firstNameInput=document.getElementById("firstNameInput");
@@ -14,7 +14,7 @@ let userArr=JSON.parse(localStorage.getItem("users"))||[];
 
 //~ Function
 function register(){
-    const isPasswordMatch= (passwordInput.value === repasswordInput.value && passwordInput.value !== "");
+const isPasswordMatch= (passwordInput.value === repasswordInput.value && passwordInput.value !== "");
  if(validation(firstNameInput,nameRegex) 
     && validation(lastNameInput,nameRegex) 
 && validation(emailInput,emailRegex) 
@@ -37,6 +37,7 @@ function register(){
     localStorage.setItem("users",JSON.stringify(userArr));
     clearForm();
     showToast("Account Created Successfully!",true)
+    window.location.href="./login.html";
  }
 
  else{
