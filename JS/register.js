@@ -1,5 +1,7 @@
+
 import { clearForm, showToast } from "./Utils/ui.js";
 import { emailRegex, nameRegex, passwordRegex, validation } from "./Utils/validate.js";
+
 
 //* Html Element
 const firstNameInput=document.getElementById("firstNameInput");
@@ -8,9 +10,12 @@ const emailInput=document.getElementById("emailInput");
 const passwordInput=document.getElementById("passwordInput");
 const repasswordInput=document.getElementById("repasswordInput");
 const btnRegister=document.getElementById("btn-Register");
+const userImageInput = document.getElementById("userImageInput");
+const userImagePreview = document.getElementById("userImagePreview");
 
 //^ Variables
 const userArr=JSON.parse(localStorage.getItem("users"))||[];
+let userImage="";
 
 //~ Function
 function register(){
@@ -32,6 +37,7 @@ const isPasswordMatch= (passwordInput.value === repasswordInput.value && passwor
         lastName:lastNameInput.value,
         Email:emailInput.value,
         password:passwordInput.value,
+        image: userImage || "https://onthespottax.co.uk/images/silhouette.jpg" 
     }
     userArr.push(user);
     localStorage.setItem("users",JSON.stringify(userArr));
@@ -65,4 +71,21 @@ repasswordInput.addEventListener("input",function(){
         return false;
     }
 
+})
+
+userImageInput.addEventListener("change",function(){
+    const file=userImageInput.files[0];
+    
+    if(!file) return;
+    if(!file.type.startsWith("image/")){
+        showToast("Please upload a valid image file.");
+        return;
+    }
+    const reader=new FileReader();
+    reader.onload=function(e){
+        userImage=e.target.result;
+        userImagePreview.src=userImage
+    }
+ 
+    reader.readAsDataURL(file); 
 })

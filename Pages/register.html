@@ -22,6 +22,17 @@
             <div class="row d-flex flex-wrap align-items-center justify-content-between ">
             <div class="form col-12 col-lg-6 p-4 p-md-4  order-2 order-lg-1">
                 <h2 class="text-center mb-4 fw-medium">Create Account</h2>
+ <div class="image-upload">
+        <label for="userImageInput"  class="position-relative ">
+            <div class="image-container">
+                <img id="userImagePreview" src="https://onthespottax.co.uk/images/silhouette.jpg" alt="Profile Image" />
+            </div>
+            <div class="camera-icon ">
+                <i class="fa-solid fa-camera fs-3"></i>
+            </div>
+        </label>
+        <input type="file" id="userImageInput" accept="image/*" hidden />
+    </div>
               <div class="row ">
                 <div class="col-6">
                     <input id="firstNameInput" type="text" class="form-control" placeholder="First name" aria-label="First name" name="First name">
