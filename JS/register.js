@@ -1,8 +1,6 @@
 
 import { clearForm, showToast } from "./Utils/ui.js";
 import { emailRegex, nameRegex, passwordRegex, validation } from "./Utils/validate.js";
-
-
 //* Html Element
 const firstNameInput=document.getElementById("firstNameInput");
 const lastNameInput=document.getElementById("lastNameInput");

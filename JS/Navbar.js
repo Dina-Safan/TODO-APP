@@ -10,8 +10,6 @@ async function loadNavbar(){
     const response= await fetch("../Components/Navbar.html");
      const navHTML = await response.text();
      container.innerHTML=navHTML;
-    container.innerHTML = navHTML;
-
 setTimeout(() => {
   const userImage = document.getElementById("userImage");
   const userName = document.getElementById("userName");
