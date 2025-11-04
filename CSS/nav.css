@@ -1,0 +1,23 @@
+
+nav .logo img{
+    width: 50px;
+    object-fit: cover;
+} 
+
+nav .user-info .avatar{
+    width: 42%;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+nav .user-info .avatar img{
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
