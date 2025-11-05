@@ -6,13 +6,20 @@
   --bs-primary: #FFC100;       
   --bs-success: #2ECC71;   
     --form-bg-opacity: 0.85;     
+  --bs-transition-speed:  0.3s ease;
+   --bs-border-color:rgba(128, 128, 128, 0.041);
+    --bs-text-color:#000000;
+    --bs-gray-color:rgba(0, 0, 0, 0.493);
 }
 
 [data-bs-theme="dark"] {
+   --bs-text-color: white;
   --bs-body-bg: #273238;        
   --bs-body-color: #FFF;     
   --bs-primary: #FFC100;        
-  --bs-success: #27AE60;       
+  --bs-success: #27AE60;  
+   --bs-border-color: rgba(128, 128, 128, 0.795);   
+    --bs-gray-color: rgba(255, 255, 255, 0.74);  
 }
 
 
