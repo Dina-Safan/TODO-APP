@@ -1,0 +1,40 @@
+.helper{
+    margin-top:140px ;
+  .container{
+      border-top: 1px solid var(--bs-border-color);
+    border-bottom:  1px solid var(--bs-border-color);
+    padding-block: 20px;
+.header{
+    font-weight: 500;
+    i{
+        font-size: 16px;
+    }
+   span{
+    font-size: 18px;
+
+   }
+
+    }
+  
+    .icons{
+          i{
+            font-size: 20px;
+            border: 1px solid  var(--bs-bginput-color);
+            padding: 8px;
+            border-radius: 5px;
+            background-color: #eeeeee57;
+        }
+       
+    }
+  }
+}
+
+.task-container{
+    .card{
+        overflow: hidden;
+        .card-title{
+            background-color: var(--bs-bginput-color);
+
+        }
+    }
+}

@@ -4,8 +4,9 @@ nav{
   left: 0;
   right: 0;
   padding: 10px 0;
- 
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  background-color: var(--bs-body-bg)
 
 }
 nav .logo img{
@@ -38,7 +39,7 @@ nav .user-info .avatar img{
   padding: 5px 13px;
   display: flex;
   align-items: center;
-  background-color: var(--bs-border-color);
+  background-color: var( --bs-bginput-color);
   transition: all var(--bs-transition-speed);
 }
 
