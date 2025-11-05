@@ -40,10 +40,17 @@ ul{
     list-style: none;
 }
 
-.form-control:focus{
+.form-control:focus ,.form-select:focus{
 
     background-color: var(--bs-body-bg);  
     color: var(--bs-body-color);   
     border-color: var(--bs-primary);  
     box-shadow: 0 0 0 .25rem #ffbf009d;
+}
+
+input + p ,textarea+p{
+    background-color: #f8d7da;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 8px;
 }

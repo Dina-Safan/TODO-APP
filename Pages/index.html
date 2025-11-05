@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,7 @@
   
     </section>
 
-    <section class="task-container">
+    <section class="task-container mb-5">
         <div class="container">
             <div class="row align-items-center ">
                 <div class="col-6 col-md-4 col-lg-4">
@@ -186,8 +186,43 @@
 
 </main>
 
+<section class="modal position-absolute  w-100 h-100 d-none">
+    <div class="container h-100 d-flex justify-content-center  align-items-center">
+        <div class="form  d-flex gap-4 flex-column">
+            <select class="form-select" aria-label="Default select example" id="statusInput">
+                <option hidden disabled selected>Select Task status</option>
+                <option value="nextUp">Next Up</option>
+                <option value="inProgress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
+            <select class="form-select" aria-label="Default select example" id="categoryInput">
+                <option hidden disabled selected>Select Category</option>
+                <option value="Education">Education</option>
+                <option value="Finance">Finance</option>
+                <option value="Health">Health & Fitness</option>
+                <option value="Productivity">Productivity</option>
+            </select>
+
+              <div class="title">
+                    <input id="titleInput"  type="text" class="form-control" placeholder=" Task Title..." aria-label="title" name="Title">
+                    <p class=" mt-2 mb-0 d-none" role="alert"> Title More Than 3 letters</p>
+                </div> 
+              <div class="description">
+                    <textarea id="descriptionInput" class="form-control" aria-label="description" name="Description" placeholder="Description........." class="w-100"></textarea>
+                    <p class=" mt-2 mb-0 d-none" role="alert">more than 25 letter </p>
+                </div> 
+
+                <button id="addTaskBtn">Add Task</button>
+                <button id="updateTaskBtn" class="d-none" >Update Task</button>
+
+        
+        </div>
+    </div>
+</section>
+
 
 
 <script src="../JS/Navbar.js"></script>
+<script src="../JS/index.js"></script>
 </body>
 </html>

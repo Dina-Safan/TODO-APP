@@ -38,3 +38,34 @@
         }
     }
 }
+
+
+.modal{
+    background-color: rgba(0, 0, 0, 0.514);
+    .form{
+        background-color: var(  --bs-body-bg);
+        padding: 30px 30px;
+        border-radius: 10px;
+        width: 700px;
+
+        button{
+            
+            padding: 5px 5px;
+            border-radius: 8px;
+            color: white;
+            font-size: 17px;
+        }
+
+        button#addTaskBtn{
+            border:1px solid var(--bs-primary);
+            background-color: var(--bs-primary);
+        }
+
+        button#updateTaskBtn{
+             border:1px solid #0dcaf0;
+             background-color: #0dcaf0;
+
+            
+        }
+    }
+}
