@@ -21,3 +21,10 @@ setTimeout(() => {
 
 //&Events
 loadNavbar();
+
+const avatar = document.querySelector('.avatar');
+const info = document.querySelector('.info');
+
+avatar.addEventListener('click', () => {
+  info.style.display = info.style.display === 'block' ? 'none' : 'block';
+});

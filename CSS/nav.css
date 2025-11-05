@@ -5,7 +5,7 @@ nav .logo img{
 } 
 
 nav .user-info .avatar{
-    width: 42%;
+    width: 42px;
     height: 42px;
     border-radius: 50%;
     overflow: hidden;
@@ -65,3 +65,60 @@ nav .user-info .avatar img{
 .search-bar:focus-within i {
   color: var(--bs-primary);
 }
+
+
+/* ====== Tablet & Mobile ====== */
+@media (max-width: 992px) {
+  nav .search-bar {
+    width: 250px;
+  }
+
+  nav .logo img {
+    width: 45px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+   .logo h1{
+    font-size: 16px !important;
+  }
+  .search-bar {
+    width: 100px;
+    padding: 6px 12px;
+  }
+
+  .search-bar input {
+    font-size: 14px;
+  }
+  .user-info .info {
+    display: none;
+  }
+
+   .user-info  {
+    position: relative;
+  }
+
+  /* نص الـ welcome يظهر فوق الصورة لما نعمل hover */
+  .user-info .avatar:hover + .info {
+    display: block;
+    position: absolute;
+    bottom: -55px; /* المسافة فوق الصورة */
+    left: -20%;
+    transform: translateX(-50%);
+    background: var(--bs-body-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 8px;
+    padding: 6px 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    white-space: nowrap;
+    z-index: 100;
+  }
+.user-info .avatar:hover + .info p{
+  font-size: 13px;
+}
+  
+}
+ 
