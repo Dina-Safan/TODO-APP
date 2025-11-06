@@ -41,6 +41,7 @@ function showModal(){
 //hide modal Function
 function hideModal(){
       modalElement.classList.replace("d-block" ,"d-none");
+    //   clear();
       document.body.style.overflow="auto";
 }
 
@@ -99,9 +100,9 @@ function displayAllTasks(){
 
 //clear function
 function clear(){
-     titleInput.value="";
+    titleInput.value="";
     descriptionInput.value="";
-    categoryInput.value="";
+     categoryInput.value="";
     statusInput.value="";
     titleInput.classList.remove("is-valid");
     descriptionInput.classList.remove("is-valid")
