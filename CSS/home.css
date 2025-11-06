@@ -160,3 +160,15 @@
             background-color: var(--bs-primary);
 
 }
+
+.logout{
+    background-color: var(--bs-primary);
+    width: 40px;
+    height: 40px;
+    bottom: 30px;
+    right: 30px;
+    i{
+        font-size: 19px;
+        color: var(--bs-text-color);
+    }
+}

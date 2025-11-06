@@ -1,5 +1,6 @@
 import { descriptionRegex, titleRegex, validation } from "./Utils/validate.js";
-import {  showToast } from './Utils/ui.js';
+// import {  showToast } from './Utils/ui.js';
+import { logOut } from './Utils/main.js';
 
 //* Html Element
 const btnAddElement=document.querySelector("main .btn-add  button");
@@ -18,6 +19,8 @@ const  darkBtn=document.querySelector(".helper .icons .mode .fa-moon");
 let currentTheme=localStorage.getItem("currentTheme")||"light";
 htmlElement.setAttribute("data-bs-theme",currentTheme);
 
+//logout
+const logoutBtn=document.querySelector(".logout");
 //^ Variables
 const status={
     nextUp:document.querySelector(".task-container .nextUp .card-body "),
@@ -231,3 +234,10 @@ updateTaskBtn.addEventListener("click",function(){updateTask(taskIndex)})
 //Theme event
 lightBtn.addEventListener("click",function(e){modeTheme("light")});
 darkBtn.addEventListener("click",function(e){modeTheme("dark")});
+
+//logout event
+
+logoutBtn.addEventListener("click",function(){
+    logOut();
+    showToast("LogOut Successfully" ,true);
+});
