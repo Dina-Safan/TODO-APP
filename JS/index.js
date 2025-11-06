@@ -96,10 +96,26 @@ function editTask(index){
     categoryInput.value=taskArr[index].category;
     titleInput.value=taskArr[index].title;
     descriptionInput.value=taskArr[index].description;
+    updateTaskBtn.classList.replace("d-none","d-block");
+    addTaskBtn.classList.replace("d-block","d-none");
     showModal();
 }
 window.editTask=editTask;
 
+//update Function
+function updateTask(index){
+ taskArr[index].status= statusInput.value;
+ taskArr[index].category= categoryInput.value;
+ taskArr[index].title=titleInput.value;
+ taskArr[index].description=descriptionInput.value;
+ updateTaskBtn.classList.replace("d-block","d-none");
+ addTaskBtn.classList.replace("d-none","d-block");
+ setTasks();
+ resetCounter();
+ resetTasks();
+ displayAllTasks();
+ hideModal();
+}
 
 //show modal Function
 function showModal(){
@@ -193,4 +209,5 @@ addTaskBtn.addEventListener("click",addTask)
 titleInput.addEventListener("input",function(e){validation(titleInput,titleRegex)});
 //validate description
 descriptionInput.addEventListener("input",function(e){validation(descriptionInput,descriptionRegex)});
-//search event 
+//update event 
+updateTaskBtn.addEventListener("click",function(){updateTask(taskIndex)})
