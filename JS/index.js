@@ -21,6 +21,13 @@ const status={
     inProgress:document.querySelector(".task-container .inProgress .card-body "),
     done:document.querySelector(".task-container .done .card-body "),
 };
+const counter={
+    nextUp:document.querySelector(".task-container .nextUp .card-title "),
+    inProgress:document.querySelector(".task-container .inProgress .card-title "),
+    done:document.querySelector(".task-container .done .card-title "),
+};
+
+
 displayAllTasks();
 
 
@@ -29,11 +36,14 @@ displayAllTasks();
 //show modal Function
 function showModal(){
     modalElement.classList.replace("d-none" ,"d-block");
+    document.body.style.overflow = "hidden";
+    window.scroll(0,0);
 }
 
 //hide modal Function
 function hideModal(){
       modalElement.classList.replace("d-block" ,"d-none");
+      document.body.style.overflow="auto";
 }
 
 //set tasks in local storage Function
@@ -77,7 +87,8 @@ function displayTask(i){
                                         <i class="fa-solid fa-palette"></i>
                                     </div>
                                 </div>`
-        status[taskArr[i].status].innerHTML +=task;        
+        status[taskArr[i].status].innerHTML +=task;  
+        counter[taskArr[i].status].querySelector(".counter").innerHTML= +counter[taskArr[i].status].querySelector(".counter").innerHTML +1; 
 }
 
 //Display All Tasks
@@ -92,10 +103,12 @@ function clear(){
     descriptionInput.value="";
     categoryInput.value="";
     statusInput.value="";
+    titleInput.classList.remove("is-valid");
+    descriptionInput.classList.remove("is-valid")
+
 }
 
 //& Events
-
 //show modal
 btnAddElement.addEventListener("click",showModal)
 
