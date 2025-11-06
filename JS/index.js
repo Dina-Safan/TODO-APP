@@ -1,5 +1,5 @@
 import { descriptionRegex, titleRegex, validation } from "./Utils/validate.js";
-import { showToast } from './Utils/ui.js';
+import {  showToast } from './Utils/ui.js';
 
 //* Html Element
 const btnAddElement=document.querySelector("main .btn-add  button");
@@ -14,7 +14,16 @@ const updateTaskBtn =document.getElementById("updateTaskBtn");
 
 
 //^ Variables
+
 let taskArr=getTasks();
+const status={
+    nextUp:document.querySelector(".task-container .nextUp .card-body "),
+    inProgress:document.querySelector(".task-container .inProgress .card-body "),
+    done:document.querySelector(".task-container .done .card-body "),
+};
+displayAllTasks();
+
+
 
 //~ Function
 //show modal Function
@@ -37,9 +46,11 @@ function getTasks(){
     return JSON.parse(localStorage.getItem(`tasks_${currentUser.Email}`))||[];
 }
 
-//display Function
+//add Function
 function addTask(){
-   if(validation(titleInput,titleRegex) && validation(descriptionInput,descriptionRegex)){
+   if(validation(titleInput,titleRegex) && 
+   validation(descriptionInput,descriptionRegex) &&
+statusInput.value !=="" && categoryInput.value !==""){
      const task={
         status:statusInput.value,
         category:categoryInput.value,
@@ -48,9 +59,39 @@ function addTask(){
     }
     taskArr.push(task);
     setTasks();
+    displayTask(taskArr.length-1);
     hideModal();
+    clear();
    }
+}
 
+//display Function
+function displayTask(i){
+    let task=`  <div class="card task px-3 py-2">
+                                    <div class="title">${taskArr[i].title}</div>
+                                    <div class="description">${taskArr[i].description}</div>
+                                    <div class="tag ${taskArr[i].category}">${taskArr[i].category}</div>
+                                    <div class="icons d-flex align-items-center gap-3">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        <i class="fa-solid fa-trash"></i>
+                                        <i class="fa-solid fa-palette"></i>
+                                    </div>
+                                </div>`
+        status[taskArr[i].status].innerHTML +=task;        
+}
+
+//Display All Tasks
+function displayAllTasks(){
+    for(let i=0;i<taskArr.length;i++){
+        displayTask(i);
+    }
+}
+
+function clear(){
+     titleInput.value="";
+    descriptionInput.value="";
+    categoryInput.value="";
+    statusInput.value="";
 }
 
 //& Events

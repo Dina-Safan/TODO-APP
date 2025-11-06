@@ -22,6 +22,7 @@ export function clearForm(){
     emailInput.value="";
     passwordInput.value="";
     repasswordInput.value = "";
+
       const inputs = [firstNameInput, lastNameInput, emailInput, passwordInput, repasswordInput];
     inputs.forEach(input => {
     input.classList.remove("is-valid", "is-invalid");
