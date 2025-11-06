@@ -96,6 +96,17 @@
             .tag.Productivity{
                 background-color:#4CAF50 ;
             }
+            i{
+                transition: all var(--bs-transition-speed);
+            }
+
+            .fa-trash:hover{
+                color: rgb(220 53 69);
+            }
+
+            .fa-pen-to-square:hover{
+                color: rgb(255 193 7);
+            }
             
         }
     }

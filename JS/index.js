@@ -81,7 +81,7 @@ function displayTask(i){
                                     <div class="description">${taskArr[i].description}</div>
                                     <div class="tag ${taskArr[i].category}">${taskArr[i].category}</div>
                                     <div class="icons d-flex align-items-center gap-3">
-                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        <i class="fa-solid fa-pen-to-square "></i>
                                         <i class="fa-solid fa-trash" onclick="deleteTask(${i})"></i>
                                         <i class="fa-solid fa-palette"></i>
                                     </div>
