@@ -13,6 +13,9 @@ const updateTaskBtn =document.getElementById("updateTaskBtn");
 
 
 
+
+
+
 //^ Variables
 const status={
     nextUp:document.querySelector(".task-container .nextUp .card-body "),
@@ -31,29 +34,6 @@ displayAllTasks();
 
 
 //~ Function
-//show modal Function
-function showModal(){
-    modalElement.classList.replace("d-none" ,"d-block");
-    document.body.style.overflow = "hidden";
-    window.scroll(0,0);
-}
-
-//hide modal Function
-function hideModal(){
-      modalElement.classList.replace("d-block" ,"d-none");
-    //   clear();
-      document.body.style.overflow="auto";
-}
-
-//set tasks in local storage Function
-function setTasks(){
-localStorage.setItem(`tasks_${currentUser.Email}`,JSON.stringify(taskArr));
-}
-
-//get tasks from local storage function
-function getTasks(){
-    return JSON.parse(localStorage.getItem(`tasks_${currentUser.Email}`))||[];
-}
 
 //add Function
 function addTask(){
@@ -98,6 +78,42 @@ function displayAllTasks(){
     }
 }
 
+//delete Function
+function deleteTask(index){
+    taskArr.splice(index,1);
+    setTasks();
+    resetCounter();
+    resetTasks();
+    displayAllTasks();
+}
+
+
+window.deleteTask = deleteTask;
+//show modal Function
+function showModal(){
+    modalElement.classList.replace("d-none" ,"d-block");
+    document.body.style.overflow = "hidden";
+    window.scroll(0,0);
+}
+
+//hide modal Function
+function hideModal(){
+      modalElement.classList.replace("d-block" ,"d-none");
+    //   clear();
+      document.body.style.overflow="auto";
+}
+
+//set tasks in local storage Function
+function setTasks(){
+localStorage.setItem(`tasks_${currentUser.Email}`,JSON.stringify(taskArr));
+}
+
+//get tasks from local storage function
+function getTasks(){
+    return JSON.parse(localStorage.getItem(`tasks_${currentUser.Email}`))||[];
+}
+
+
 //clear function
 function clear(){
     titleInput.value="";
@@ -108,16 +124,6 @@ function clear(){
     descriptionInput.classList.remove("is-valid")
 
 }
-
-//delete Function
-function deleteTask(index){
-    taskArr.splice(index,1);
-    setTasks();
-    resetCounter();
-    resetTasks();
-    displayAllTasks();
-}
-window.deleteTask = deleteTask;
 
 
 //reset Counter Function
@@ -135,6 +141,24 @@ function resetTasks(){
   }
 
 }
+
+async function initHome(){
+ const { searchInput } = await loadNavbar();   
+//Search Function
+function searchTask(){
+      resetCounter();
+       resetTasks();
+    for(let i=0 ;i<taskArr.length;i++){
+        if((taskArr[i].title.toLowerCase()).includes(searchInput.value.toLowerCase()) || (taskArr[i].category.toLowerCase()).includes(searchInput.value.toLowerCase())){
+            displayTask(i);
+        }
+    }
+}
+      searchInput.addEventListener("input",searchTask);
+       
+}
+
+initHome()
 
 //& Events
 //show modal
@@ -156,3 +180,4 @@ addTaskBtn.addEventListener("click",addTask)
 titleInput.addEventListener("input",function(e){validation(titleInput,titleRegex)});
 //validate description
 descriptionInput.addEventListener("input",function(e){validation(descriptionInput,descriptionRegex)});
+//search event 

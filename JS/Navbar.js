@@ -19,10 +19,12 @@ setTimeout(() => {
 
 const avatar = document.querySelector('.avatar');
 const info = document.querySelector('.info');
+ const searchInput = document.querySelector(".search-bar input"); // ← هنا
 
 avatar.addEventListener('click', () => {
   info.style.display = info.style.display === 'block' ? 'none' : 'block';
 });
+return {searchInput}
 
 }
 
