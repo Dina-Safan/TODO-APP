@@ -18,6 +18,7 @@ const  lightBtn=document.querySelector(".helper .icons .mode .fa-sun");
 const  darkBtn=document.querySelector(".helper .icons .mode .fa-moon");
 let currentTheme=localStorage.getItem("currentTheme")||"light";
 htmlElement.setAttribute("data-bs-theme",currentTheme);
+modeTheme(currentTheme);
 
 //logout
 const logoutBtn=document.querySelector(".logout");
@@ -196,13 +197,17 @@ function modeTheme(theme){
       htmlElement.setAttribute("data-bs-theme",theme);
 
      if(theme=="light"){
-           lightBtn.classList.replace("d-block","d-none");
-          darkBtn.classList.replace("d-none","d-block");
+            lightBtn.classList.add("d-none");
+    lightBtn.classList.remove("d-block");
+    darkBtn.classList.remove("d-none");
+    darkBtn.classList.add("d-block");
      }
 
      else{
-         lightBtn.classList.replace("d-none","d-block");
-         darkBtn.classList.replace("d-block","d-none");
+        lightBtn.classList.remove("d-none");
+    lightBtn.classList.add("d-block");
+    darkBtn.classList.add("d-none");
+    darkBtn.classList.remove("d-block");
 
      }
 }
