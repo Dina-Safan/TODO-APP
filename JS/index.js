@@ -4,17 +4,19 @@ import {  showToast } from './Utils/ui.js';
 //* Html Element
 const btnAddElement=document.querySelector("main .btn-add  button");
 const modalElement=document.querySelector(".modal");
+//Modal Input and Btn
 const statusInput =document.getElementById("statusInput");
 const categoryInput =document.getElementById("categoryInput");
 const titleInput =document.getElementById("titleInput");
 const descriptionInput =document.getElementById("descriptionInput");
 const addTaskBtn =document.getElementById("addTaskBtn");
 const updateTaskBtn =document.getElementById("updateTaskBtn");
-
-
-
-
-
+//Mode Style
+const htmlElement=document.documentElement;
+const  lightBtn=document.querySelector(".helper .icons .mode .fa-sun");
+const  darkBtn=document.querySelector(".helper .icons .mode .fa-moon");
+let currentTheme=localStorage.getItem("currentTheme")||"light";
+htmlElement.setAttribute("data-bs-theme",currentTheme);
 
 //^ Variables
 const status={
@@ -86,8 +88,6 @@ function deleteTask(index){
     resetTasks();
     displayAllTasks();
 }
-
-
 window.deleteTask = deleteTask;
 
 //edit Function
@@ -127,7 +127,7 @@ function showModal(){
 //hide modal Function
 function hideModal(){
       modalElement.classList.replace("d-block" ,"d-none");
-    //   clear();
+      clear();
       document.body.style.overflow="auto";
 }
 
@@ -141,7 +141,6 @@ function getTasks(){
     return JSON.parse(localStorage.getItem(`tasks_${currentUser.Email}`))||[];
 }
 
-
 //clear function
 function clear(){
     titleInput.value="";
@@ -152,7 +151,6 @@ function clear(){
     descriptionInput.classList.remove("is-valid")
 
 }
-
 
 //reset Counter Function
 function resetCounter(){
@@ -186,8 +184,26 @@ function searchTask(){
       searchInput.addEventListener("input",searchTask);
        
 }
+initHome();
 
-initHome()
+//Mode Theme Function
+function modeTheme(theme){
+    currentTheme=theme;
+     localStorage.setItem("currentTheme",theme);
+      htmlElement.setAttribute("data-bs-theme",theme);
+
+     if(theme=="light"){
+           lightBtn.classList.replace("d-block","d-none");
+          darkBtn.classList.replace("d-none","d-block");
+     }
+
+     else{
+         lightBtn.classList.replace("d-none","d-block");
+         darkBtn.classList.replace("d-block","d-none");
+
+     }
+}
+
 
 //& Events
 //show modal
@@ -211,3 +227,7 @@ titleInput.addEventListener("input",function(e){validation(titleInput,titleRegex
 descriptionInput.addEventListener("input",function(e){validation(descriptionInput,descriptionRegex)});
 //update event 
 updateTaskBtn.addEventListener("click",function(){updateTask(taskIndex)})
+
+//Theme event
+lightBtn.addEventListener("click",function(e){modeTheme("light")});
+darkBtn.addEventListener("click",function(e){modeTheme("dark")});
