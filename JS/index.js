@@ -62,7 +62,7 @@ function displayTask(i){
                                     <div class="description">${taskArr[i].description}</div>
                                     <div class="tag ${taskArr[i].category}">${taskArr[i].category}</div>
                                     <div class="icons d-flex align-items-center gap-3">
-                                        <i class="fa-solid fa-pen-to-square "></i>
+                                        <i class="fa-solid fa-pen-to-square" onclick="editTask(${i})" ></i>
                                         <i class="fa-solid fa-trash" onclick="deleteTask(${i})"></i>
                                         <i class="fa-solid fa-palette"></i>
                                     </div>
@@ -89,6 +89,18 @@ function deleteTask(index){
 
 
 window.deleteTask = deleteTask;
+
+//edit Function
+function editTask(index){
+    statusInput.value=taskArr[index].status;
+    categoryInput.value=taskArr[index].category;
+    titleInput.value=taskArr[index].title;
+    descriptionInput.value=taskArr[index].description;
+    showModal();
+}
+window.editTask=editTask;
+
+
 //show modal Function
 function showModal(){
     modalElement.classList.replace("d-none" ,"d-block");
@@ -141,6 +153,7 @@ function resetTasks(){
   }
 
 }
+
 
 async function initHome(){
  const { searchInput } = await loadNavbar();   
