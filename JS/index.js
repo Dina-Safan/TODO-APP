@@ -14,8 +14,6 @@ const updateTaskBtn =document.getElementById("updateTaskBtn");
 
 
 //^ Variables
-
-let taskArr=getTasks();
 const status={
     nextUp:document.querySelector(".task-container .nextUp .card-body "),
     inProgress:document.querySelector(".task-container .inProgress .card-body "),
@@ -26,8 +24,8 @@ const counter={
     inProgress:document.querySelector(".task-container .inProgress .card-title "),
     done:document.querySelector(".task-container .done .card-title "),
 };
-
-
+let taskIndex;
+let taskArr=getTasks();
 displayAllTasks();
 
 
@@ -77,13 +75,14 @@ statusInput.value !=="" && categoryInput.value !==""){
 
 //display Function
 function displayTask(i){
+    taskIndex=i;
     let task=`  <div class="card task px-3 py-2">
                                     <div class="title">${taskArr[i].title}</div>
                                     <div class="description">${taskArr[i].description}</div>
                                     <div class="tag ${taskArr[i].category}">${taskArr[i].category}</div>
                                     <div class="icons d-flex align-items-center gap-3">
                                         <i class="fa-solid fa-pen-to-square"></i>
-                                        <i class="fa-solid fa-trash"></i>
+                                        <i class="fa-solid fa-trash" onclick="deleteTask(${i})"></i>
                                         <i class="fa-solid fa-palette"></i>
                                     </div>
                                 </div>`
@@ -98,6 +97,7 @@ function displayAllTasks(){
     }
 }
 
+//clear function
 function clear(){
      titleInput.value="";
     descriptionInput.value="";
@@ -105,6 +105,33 @@ function clear(){
     statusInput.value="";
     titleInput.classList.remove("is-valid");
     descriptionInput.classList.remove("is-valid")
+
+}
+
+//delete Function
+function deleteTask(index){
+    taskArr.splice(index,1);
+    setTasks();
+    resetCounter();
+    resetTasks();
+    displayAllTasks();
+}
+window.deleteTask = deleteTask;
+
+
+//reset Counter Function
+function resetCounter(){
+      for (let key in counter) {
+    counter[key].querySelector(".counter").innerHTML = 0;
+  }
+   
+}
+
+//reset ConatinerTask Function
+function resetTasks(){
+    for (let key in status) {
+    status[key].innerHTML = "";
+  }
 
 }
 
