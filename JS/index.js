@@ -12,17 +12,19 @@ const titleInput =document.getElementById("titleInput");
 const descriptionInput =document.getElementById("descriptionInput");
 const addTaskBtn =document.getElementById("addTaskBtn");
 const updateTaskBtn =document.getElementById("updateTaskBtn");
-//Mode Style
+//Theme Style
 const htmlElement=document.documentElement;
-const  lightBtn=document.querySelector(".helper .icons .mode .fa-sun");
-const  darkBtn=document.querySelector(".helper .icons .mode .fa-moon");
+const  lightBtn=document.querySelector(".helper .icons .theme .fa-sun");
+const  darkBtn=document.querySelector(".helper .icons .theme .fa-moon");
 let currentTheme=localStorage.getItem("currentTheme")||"light";
 htmlElement.setAttribute("data-bs-theme",currentTheme);
 modeTheme(currentTheme);
-
 //logout
 const logoutBtn=document.querySelector(".logout");
+
+
 //^ Variables
+const paletteColors = [ "#3498db",  "#2ecc71", "#e67e22",  "#e74c3c",  "#9b59b6" ];
 const status={
     nextUp:document.querySelector(".task-container .nextUp .card-body "),
     inProgress:document.querySelector(".task-container .inProgress .card-body "),
@@ -41,6 +43,16 @@ displayAllTasks();
 
 //~ Function
 
+// Palette color Function
+function changeColor(event,index){ 
+  const random = Math.trunc(Math.random() * paletteColors.length);
+  const newColor=paletteColors[random]
+  taskArr[index].bg  = newColor;
+  setTasks();
+ event.target.closest(".task").style.backgroundColor=newColor;
+}
+window.changeColor=changeColor;
+
 //add Function
 function addTask(){
    if(validation(titleInput,titleRegex) && 
@@ -51,26 +63,27 @@ statusInput.value !=="" && categoryInput.value !==""){
         category:categoryInput.value,
         title:titleInput.value,
         description:descriptionInput.value,
+        bg:"var(--bs-body-bg)",
     }
     taskArr.push(task);
     setTasks();
     displayTask(taskArr.length-1);
     hideModal();
-    clear();
+    clear();    
    }
 }
 
 //display Function
 function displayTask(i){
     taskIndex=i;
-    let task=`  <div class="card task px-3 py-2">
+    let task=`  <div class="card task px-3 py-2" style="background-color:${taskArr[i].bg}">
                                     <div class="title">${taskArr[i].title}</div>
                                     <div class="description">${taskArr[i].description}</div>
                                     <div class="tag ${taskArr[i].category}">${taskArr[i].category}</div>
                                     <div class="icons d-flex align-items-center gap-3">
                                         <i class="fa-solid fa-pen-to-square" onclick="editTask(${i})" ></i>
                                         <i class="fa-solid fa-trash" onclick="deleteTask(${i})"></i>
-                                        <i class="fa-solid fa-palette"></i>
+                                        <i class="fa-solid fa-palette" onclick="changeColor(event,${i})"></i>
                                     </div>
                                 </div>`
         status[taskArr[i].status].innerHTML +=task;  
@@ -213,6 +226,7 @@ function modeTheme(theme){
 }
 
 
+
 //& Events
 //show modal
 btnAddElement.addEventListener("click",showModal)
@@ -231,8 +245,10 @@ addTaskBtn.addEventListener("click",addTask)
 
 //validate titile 
 titleInput.addEventListener("input",function(e){validation(titleInput,titleRegex)});
+
 //validate description
 descriptionInput.addEventListener("input",function(e){validation(descriptionInput,descriptionRegex)});
+
 //update event 
 updateTaskBtn.addEventListener("click",function(){updateTask(taskIndex)})
 
@@ -241,7 +257,6 @@ lightBtn.addEventListener("click",function(e){modeTheme("light")});
 darkBtn.addEventListener("click",function(e){modeTheme("dark")});
 
 //logout event
-
 logoutBtn.addEventListener("click",function(){
     logOut();
     showToast("LogOut Successfully" ,true);
