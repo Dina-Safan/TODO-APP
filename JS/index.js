@@ -16,20 +16,29 @@ const updateTaskBtn =document.getElementById("updateTaskBtn");
 const htmlElement=document.documentElement;
 const  lightBtn=document.querySelector(".helper .icons .theme .fa-sun");
 const  darkBtn=document.querySelector(".helper .icons .theme .fa-moon");
-let currentTheme=localStorage.getItem("currentTheme")||"light";
-htmlElement.setAttribute("data-bs-theme",currentTheme);
-modeTheme(currentTheme);
 //logout
 const logoutBtn=document.querySelector(".logout");
 
+//change style display
+const virticalBtn=document.querySelector(".fa-grip-vertical");
+const horizontalBtn=document.querySelector(".fa-bars");
+ let styleDisplay=localStorage.getItem("styleDisplay")||"view-row";
+  document.querySelector(".task-container .row").classList.add(styleDisplay);
 
 //^ Variables
+//colors array pallete
 const paletteColors = [ "var(--bs-color1)",  "var(--bs-color2)", "var(--bs-color3)",  "var(--bs-color4)",  "var(--bs-color5)" ];
+//theme
+let currentTheme=localStorage.getItem("currentTheme")||"light";
+htmlElement.setAttribute("data-bs-theme",currentTheme);
+modeTheme(currentTheme);
+//status obj
 const status={
     nextUp:document.querySelector(".task-container .nextUp .card-body "),
     inProgress:document.querySelector(".task-container .inProgress .card-body "),
     done:document.querySelector(".task-container .done .card-body "),
 };
+//counter obj
 const counter={
     nextUp:document.querySelector(".task-container .nextUp .card-title "),
     inProgress:document.querySelector(".task-container .inProgress .card-title "),
@@ -38,8 +47,6 @@ const counter={
 let taskIndex;
 let taskArr=getTasks();
 displayAllTasks();
-
-
 
 //~ Function
 //add Function
@@ -258,5 +265,24 @@ logoutBtn.addEventListener("click",function(){
     logOut();
     showToast("LogOut Successfully" ,true);
 });
+
+//style display
+virticalBtn.addEventListener("click",function(){
+    virticalBtn.classList.add("active");
+     horizontalBtn.classList.remove("active");
+    document.querySelector(".task-container .row").classList.add("view-row");
+    document.querySelector(".task-container .row").classList.remove("view-column");
+   styleDisplay= localStorage.setItem("styleDisplay","view-row");
+
+})
+
+horizontalBtn.addEventListener("click",function(){
+    horizontalBtn.classList.add("active");
+    virticalBtn.classList.remove("active");
+    document.querySelector(".task-container .row").classList.add("view-column");
+    document.querySelector(".task-container .row").classList.remove("view-row");
+   styleDisplay= localStorage.setItem("styleDisplay","view-column");
+ 
+})
 
 
