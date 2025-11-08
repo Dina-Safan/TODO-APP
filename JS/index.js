@@ -24,7 +24,7 @@ const logoutBtn=document.querySelector(".logout");
 
 
 //^ Variables
-const paletteColors = [ "#3498db",  "#2ecc71", "#e67e22",  "#e74c3c",  "#9b59b6" ];
+const paletteColors = [ "#FF8F8F",  "#D6F4ED", "#FFE6D4",  "#E9B3FB",  "#BDE3C3" ];
 const status={
     nextUp:document.querySelector(".task-container .nextUp .card-body "),
     inProgress:document.querySelector(".task-container .inProgress .card-body "),
@@ -42,17 +42,6 @@ displayAllTasks();
 
 
 //~ Function
-
-// Palette color Function
-function changeColor(event,index){ 
-  const random = Math.trunc(Math.random() * paletteColors.length);
-  const newColor=paletteColors[random]
-  taskArr[index].bg  = newColor;
-  setTasks();
- event.target.closest(".task").style.backgroundColor=newColor;
-}
-window.changeColor=changeColor;
-
 //add Function
 function addTask(){
    if(validation(titleInput,titleRegex) && 
@@ -225,7 +214,15 @@ function modeTheme(theme){
      }
 }
 
-
+// Palette color Function
+function changeColor(event,index){ 
+  const random = Math.trunc(Math.random() * paletteColors.length);
+  const newColor=paletteColors[random]
+  taskArr[index].bg  = newColor;
+  setTasks();
+ event.target.closest(".task").style.backgroundColor=newColor;
+}
+window.changeColor=changeColor;
 
 //& Events
 //show modal
@@ -261,3 +258,4 @@ logoutBtn.addEventListener("click",function(){
     logOut();
     showToast("LogOut Successfully" ,true);
 });
+

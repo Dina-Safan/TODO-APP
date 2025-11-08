@@ -31,6 +31,9 @@
 
 .task-container{
     .card{
+          border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
         overflow: hidden;
         .card-title{
             background-color: var(--bs-bginput-color);
@@ -172,3 +175,143 @@
         color: var(--bs-text-color);
     }
 }
+
+/* الأساسيات */
+.task-container .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  transition: all 0.4s ease-in-out;
+}
+
+/* الأعمدة (الفئات) */
+.task-container .row > div {
+  flex: 1 1 32%;
+  min-width: 300px;
+  transition: all 0.3s ease;
+}
+
+/* الكروت داخل كل فئة */
+.task-container .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+/* -------------------
+   ⬇️ الوضع العمودي
+------------------- */
+.view-column {
+  flex-direction: column !important;
+}
+
+.view-column > div {
+  width: 100% !important;
+}
+
+.view-column .card-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 1rem;
+  scroll-behavior: smooth;
+  transition: all 0.4s ease;
+}
+
+.view-column .card-body .task {
+  flex: 0 0 auto;
+  width: 260px;
+  transition: transform 0.3s ease;
+}
+
+.view-column .card-body::-webkit-scrollbar {
+  height: 6px;
+}
+.view-column .card-body::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* -------------------
+   ⬇️ الوضع الأفقي
+------------------- */
+ .view-row {
+  flex-direction: row !important;
+  flex-wrap: wrap;
+}
+
+.view-row > div {
+  flex: 1 1 32%;
+  min-width: 300px;
+}
+
+/* -------------------
+   📱 Responsive
+------------------- */
+/* الوضع العادي (شاشات كبيرة) */
+.task-container .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.task-container .row > div {
+  flex: 1 1 calc(33.333% - 1rem);
+  transition: all 0.3s ease;
+  min-width: 300px;
+}
+
+
+
+/* ✅ تابلت (عمودين) */
+@media (max-width: 992px) {
+  .task-container .row {
+    gap: 1rem;
+  }
+  .task-container .row > div {
+    flex: 1 1 calc(50% - 1rem);
+  }
+}
+
+/* ✅ موبايل (عمود واحد مع scroll أفقي للكروت) */
+@media (max-width: 768px) {
+  .task-container .row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .task-container .row > div {
+    width: 100%;
+  }
+
+  .task-container .card-body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 1rem;
+    scroll-behavior: smooth;
+  }
+
+  .task-container .card-body .task {
+    flex: 0 0 auto;
+    width: 250px;
+    min-width: 240px;
+  }
+
+  /* شكل السكروول للموبايل */
+  .task-container .card-body::-webkit-scrollbar {
+    height: 5px;
+  }
+  .task-container .card-body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+}
+
+
