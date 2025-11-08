@@ -22,14 +22,14 @@ const logoutBtn=document.querySelector(".logout");
 //change style display
 const virticalBtn=document.querySelector(".fa-grip-vertical");
 const horizontalBtn=document.querySelector(".fa-bars");
- let styleDisplay=localStorage.getItem("styleDisplay")||"view-row";
+ let styleDisplay=localStorage.getItem(`styleDisplay_${currentUser.Email}`)||"view-row";
   document.querySelector(".task-container .row").classList.add(styleDisplay);
 
 //^ Variables
 //colors array pallete
 const paletteColors = [ "var(--bs-color1)",  "var(--bs-color2)", "var(--bs-color3)",  "var(--bs-color4)",  "var(--bs-color5)" ];
 //theme
-let currentTheme=localStorage.getItem("currentTheme")||"light";
+let currentTheme=localStorage.getItem(`currentTheme_${currentUser.Email}`)||"light";
 htmlElement.setAttribute("data-bs-theme",currentTheme);
 modeTheme(currentTheme);
 //status obj
@@ -202,7 +202,7 @@ initHome();
 //Mode Theme Function
 function modeTheme(theme){
     currentTheme=theme;
-     localStorage.setItem("currentTheme",theme);
+     localStorage.setItem(`currentTheme_${currentUser.Email}`,theme);
       htmlElement.setAttribute("data-bs-theme",theme);
 
      if(theme=="light"){
@@ -272,7 +272,7 @@ virticalBtn.addEventListener("click",function(){
      horizontalBtn.classList.remove("active");
     document.querySelector(".task-container .row").classList.add("view-row");
     document.querySelector(".task-container .row").classList.remove("view-column");
-   styleDisplay= localStorage.setItem("styleDisplay","view-row");
+   styleDisplay= localStorage.setItem(`styleDisplay_${currentUser.Email}`,"view-row");
 
 })
 
@@ -281,7 +281,7 @@ horizontalBtn.addEventListener("click",function(){
     virticalBtn.classList.remove("active");
     document.querySelector(".task-container .row").classList.add("view-column");
     document.querySelector(".task-container .row").classList.remove("view-row");
-   styleDisplay= localStorage.setItem("styleDisplay","view-column");
+   styleDisplay= localStorage.setItem(`styleDisplay_${currentUser.Email}`,"view-column");
  
 })
 
