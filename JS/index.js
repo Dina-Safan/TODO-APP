@@ -24,6 +24,13 @@ const virticalBtn=document.querySelector(".fa-grip-vertical");
 const horizontalBtn=document.querySelector(".fa-bars");
  let styleDisplay=localStorage.getItem(`styleDisplay_${currentUser.Email}`)||"view-row";
   document.querySelector(".task-container .row").classList.add(styleDisplay);
+  if (styleDisplay === "view-column") {
+  horizontalBtn.classList.add("active");
+  virticalBtn.classList.remove("active");
+} else {
+  virticalBtn.classList.add("active");
+  horizontalBtn.classList.remove("active");
+}
 
 //^ Variables
 //colors array pallete
