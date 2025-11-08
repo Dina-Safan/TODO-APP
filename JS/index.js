@@ -24,7 +24,7 @@ const logoutBtn=document.querySelector(".logout");
 
 
 //^ Variables
-const paletteColors = [ "#FF8F8F",  "#D6F4ED", "#FFE6D4",  "#E9B3FB",  "#BDE3C3" ];
+const paletteColors = [ "var(--bs-color1)",  "var(--bs-color2)", "var(--bs-color3)",  "var(--bs-color4)",  "var(--bs-color5)" ];
 const status={
     nextUp:document.querySelector(".task-container .nextUp .card-body "),
     inProgress:document.querySelector(".task-container .inProgress .card-body "),
@@ -258,4 +258,5 @@ logoutBtn.addEventListener("click",function(){
     logOut();
     showToast("LogOut Successfully" ,true);
 });
+
 

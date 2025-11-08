@@ -11,6 +11,12 @@
    --bs-bginput-color:rgba(128, 128, 128, 0.041);
     --bs-text-color:#000000;
     --bs-gray-color:rgba(0, 0, 0, 0.493);
+    --bs-color1:#BDE3C3;
+    --bs-color2:#E9B3FB;
+    --bs-color3:#FFE6D4;
+    --bs-color4:#D6F4ED;
+    --bs-color5:#FF8F8F;
+   
 }
 
 [data-bs-theme="dark"] {
@@ -22,6 +28,11 @@
    --bs-border-color: rgba(128, 128, 128, 0.795); 
     --bs-bginput-color:rgba(128, 128, 128, 0.795);  
     --bs-gray-color: rgba(255, 255, 255, 0.74);  
+    --bs-color1:#bde3c38e;
+    --bs-color2:#e9b3fb8e;
+    --bs-color3:#ffe6d48e;
+    --bs-color4:#d6f4ed8e;
+    --bs-color5:#ff8f8f8e;
 }
 
 
