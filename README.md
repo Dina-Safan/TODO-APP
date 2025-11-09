@@ -58,3 +58,20 @@ Each user can **register**, **log in**, reset their **password**, and manage the
 
 ## 🗃️ Project Structure
 
+
+---
+
+## 💡 Tips for Developers
+
+- You can easily extend this app by connecting it to a **real backend** (e.g., Firebase or Node.js API).  
+- Add **filters or search** to quickly find specific tasks.  
+- Enhance UX with **drag & drop** task sorting.  
+- Use **IndexedDB** for more advanced offline storage if needed.
+
+---
+
+## 🌟 Author
+
+**Dina Safan**  
+💼 Front-End Developer  
+🔗 [LinkedIn Profile](#) &nbsp; | &nbsp; [GitHub Profile](#)
