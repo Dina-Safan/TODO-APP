@@ -71,3 +71,9 @@ a{
     font-size: 14px;
 }
 
+/*forgrt style*/
+.form{
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.801);
+}
+

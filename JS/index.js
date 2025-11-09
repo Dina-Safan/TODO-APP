@@ -1,10 +1,9 @@
 import { descriptionRegex, titleRegex, validation } from "./Utils/validate.js";
 // import {  showToast } from './Utils/ui.js';
 import { logOut } from './Utils/main.js';
-
+import { hideModal, modalElement, showModal } from "./Utils/modal.js";
 //* Html Element
 const btnAddElement=document.querySelector("main .btn-add  button");
-const modalElement=document.querySelector(".modal");
 //Modal Input and Btn
 const statusInput =document.getElementById("statusInput");
 const categoryInput =document.getElementById("categoryInput");
@@ -33,6 +32,7 @@ const horizontalBtn=document.querySelector(".fa-bars");
 }
 
 //^ Variables
+
 //colors array pallete
 const paletteColors = [ "var(--bs-color1)",  "var(--bs-color2)", "var(--bs-color3)",  "var(--bs-color4)",  "var(--bs-color5)" ];
 //theme
@@ -137,20 +137,6 @@ function updateTask(index){
  hideModal();
 }
 
-//show modal Function
-function showModal(){
-    modalElement.classList.replace("d-none" ,"d-block");
-    document.body.style.overflow = "hidden";
-    window.scroll(0,0);
-}
-
-//hide modal Function
-function hideModal(){
-      modalElement.classList.replace("d-block" ,"d-none");
-      clear();
-      document.body.style.overflow="auto";
-}
-
 //set tasks in local storage Function
 function setTasks(){
 localStorage.setItem(`tasks_${currentUser.Email}`,JSON.stringify(taskArr));
@@ -160,18 +146,15 @@ localStorage.setItem(`tasks_${currentUser.Email}`,JSON.stringify(taskArr));
 function getTasks(){
     return JSON.parse(localStorage.getItem(`tasks_${currentUser.Email}`))||[];
 }
-
 //clear function
-function clear(){
+ function clear(){
     titleInput.value="";
     descriptionInput.value="";
      categoryInput.value="";
     statusInput.value="";
     titleInput.classList.remove("is-valid");
     descriptionInput.classList.remove("is-valid")
-
 }
-
 //reset Counter Function
 function resetCounter(){
       for (let key in counter) {
@@ -244,11 +227,16 @@ btnAddElement.addEventListener("click",showModal)
 
 //hide modal (First Way)
 modalElement.addEventListener("click",function(e){
-    if(e.target === modalElement || e.target==modalElement.querySelector(".container"))hideModal() 
+    if(e.target === modalElement || e.target==modalElement.querySelector(".container"))
+        {hideModal();
+            clear();
+        }
 })
           //(Second Way)
 window.addEventListener("keyup",function(e){
-    if(e.code=="Escape") hideModal()
+    if(e.code=="Escape") {hideModal();
+            clear();
+        }
 })
 
 //add task

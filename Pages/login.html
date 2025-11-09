@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="../CSS/register_login.css">
     </head>
 <body>
-      <section class="login-page  d-flex justify-content-center align-items-center min-vh-100">
+   <main>
+       <section class="login-page  d-flex justify-content-center align-items-center min-vh-100">
         <div class="container ">
             <div class="row d-flex flex-wrap align-items-center justify-content-between ">
             <div class="form col-12 col-lg-6 p-4 p-md-4  order-2 order-lg-1">
@@ -25,19 +26,17 @@
                   
                 <div class="col-12">
                     <input id="emailInput"  type="email" class="form-control" placeholder=" Email" aria-label="Email" name="Email">
-                    <p class=" mt-2 invisible" role="alert"> Email is Not Valid</p>
                 </div>   
-                <div class="col-12">
-                    <input id="passwordInput" type="password" class="form-control" placeholder="Password" aria-label="Password" name="Password">
-                     <p class=" mt-2 invisible" role="alert"> Password is Not valid</p>
+                <div class="col-12 py-5">
+                    <input id="passwordInput" type="password" class="form-control " placeholder="Password" aria-label="Password" name="Password">
                 </div>   
-             
+                <p class="forget d-flex justify-content-end ">Forget Password?</p>
                 <div class="col-12">
                     <button id="btn-Login" type="button" class="btn btn-primary w-100 py-2 fw-semibold">Login</button> 
                 </div>  
                
              </div>
-             
+            
              <p class="text-center mt-3">Dont't Have An Account? <a href="./register.html" >Sign UP</a></p>
           </div>
     
@@ -51,6 +50,26 @@
 
         </div>
     </section>
+   </main>
+   <section class="modal position-absolute  w-100 h-100 d-none">
+    <div class="container h-100 d-flex justify-content-center  align-items-center">
+        <div class="form  d-flex gap-4 flex-column">
+              <div class="email">
+                    <input id="user-email"  type="email" class="form-control" placeholder=" enter your email..." aria-label="user-email" name="user-email">
+                    <p class=" mt-2 mb-0 d-none" role="alert">  This email not found</p>
+                </div> 
+              <div class="reset-pass">
+                    <input id="resetPassInput"  type="password" class="form-control" placeholder=" Reset New Password..." aria-label="resetPassInput" name="resetPassInput">
+                    <p class=" mt-2 mb-0 d-none" role="alert"> Password must be at least 6 characters with no spaces</p>
+                </div> 
+            
+                <button id="updatePassword" >Update Password</button>
+        
+        </div>
+    </div>
+</section>
+
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="../JS/login.js" type="module"></script>
 

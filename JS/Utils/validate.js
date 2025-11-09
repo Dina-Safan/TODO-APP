@@ -4,34 +4,24 @@ export const passwordRegex = /^\S{6,}$/;
 export const titleRegex = /^[A-Za-z\s]{3,}$/;
 export const descriptionRegex = /^.{5,}$/;
 
+export function validation(element, regex, options = { hideClass: "d-none" }) {
+    const { hideClass } = options;
 
-export function validation(element,regex){
-    if(regex.test(element.value)){
-        if(regex== titleRegex || regex==descriptionRegex){
-             element.nextElementSibling.classList.add("d-none");
-        }
-        else{
-            element.nextElementSibling.classList.add("invisible");
-
-        }
-       
-       element.classList.add("is-valid");
-       element.classList.remove("is-invalid");  
-         
-       return true;
+    // إزالة أي حالة قديمة
+    element.classList.remove("is-valid", "is-invalid");
+    if (element.nextElementSibling) {
+        element.nextElementSibling.classList.add(hideClass);
     }
 
-    else{
-           if(regex== titleRegex || regex==descriptionRegex){
-             element.nextElementSibling.classList.remove("d-none");
+    // التحقق من القيمة
+    if (regex.test(element.value)) {
+        element.classList.add("is-valid");
+        return true;
+    } else {
+        element.classList.add("is-invalid");
+        if (element.nextElementSibling) {
+            element.nextElementSibling.classList.remove(hideClass);
         }
-        else{
-          element.nextElementSibling.classList.remove("invisible");
-        }
-        
-         element.classList.remove("is-valid");
-         element.classList.add("is-invalid");  
-       
-         return false;
+        return false;
     }
 }
